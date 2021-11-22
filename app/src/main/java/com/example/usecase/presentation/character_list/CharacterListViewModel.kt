@@ -1,8 +1,15 @@
 package com.example.usecase.presentation.character_list
 
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.usecase.common.Resource
+import com.example.usecase.domain.model.Characters
 import com.example.usecase.domain.use_case.get_characters.GetCharactersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 /**
@@ -11,5 +18,28 @@ import javax.inject.Inject
 @HiltViewModel
 class CharacterListViewModel @Inject constructor(private val getCharactersUseCase: GetCharactersUseCase) :
     ViewModel(){
+
+    private val _state = mutableStateOf(CharacterListState())
+    val state : State<CharacterListState> = _state
+
+    init {
+        getCharacters()
+    }
+
+    fun getCharacters(){
+        getCharactersUseCase().onEach { result->
+            when(result){
+                is Resource.Success -> {
+                    _state.value = CharacterListState(characters = result.data ?: emptyList())
+                }
+                is Resource.Loading -> {
+                    _state.value = CharacterListState(isLoading = true)
+                }
+                is Resource.Error -> {
+                    _state.value = CharacterListState(error = result.message ?: "Unexpected error")
+                }
+            }
+        }.launchIn(viewModelScope)
+    }
 
     }

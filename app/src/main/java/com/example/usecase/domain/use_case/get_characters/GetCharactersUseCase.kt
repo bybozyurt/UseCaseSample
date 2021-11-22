@@ -17,15 +17,15 @@ class GetCharactersUseCase @Inject constructor(private val characterRepository: 
 
     operator fun invoke() : Flow<Resource<List<Characters>>> = flow {
         try {
-            emit(Resource.Loading())
+            emit(Resource.Loading<List<Characters>>())
             val characters = characterRepository.getCharacters().map { it.toCharacters() }
-            emit(Resource.Success(characters))
+            emit(Resource.Success<List<Characters>>(characters))
 
         } catch (e : HttpException){
-            emit(Resource.Error(e.localizedMessage ?: "UnExpected error"))
+            emit(Resource.Error<List<Characters>>(e.localizedMessage ?: "UnExpected error"))
 
         } catch (e : IOException){
-            emit(Resource.Error(e.localizedMessage ?: "Internet connect problem"))
+            emit(Resource.Error<List<Characters>>(e.localizedMessage ?: "Internet connect problem"))
         }
     }
 }
