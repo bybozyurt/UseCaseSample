@@ -22,6 +22,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.usecase.domain.model.Characters
+import com.google.accompanist.coil.rememberCoilPainter
 
 /**
  * Created by Ahmet Bozyurt on 22.11.2021
@@ -58,18 +59,18 @@ fun CharacterListItem(characters: Characters) {
                     .clip(RoundedCornerShape(12.dp))
             ) {
                 //Coil Image
-//                val image = rememberCoilPainter(
-//                    request = characters.image,
-//                    fadeIn = true
-//                )
-//
-//                Image(
-//                    painter = image,
-//                    contentDescription = "Character Image",
-//                    modifier = Modifier
-//                        .clip(RoundedCornerShape(10.dp)),
-//                    contentScale = ContentScale.Crop
-//                )
+                val image = rememberCoilPainter(
+                    request = characters.image,
+                    fadeIn = true
+                )
+
+                Image(
+                    painter = image,
+                    contentDescription = "Character Image",
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(10.dp)),
+                    contentScale = ContentScale.Crop
+                )
             }
 
             Column(
