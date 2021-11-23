@@ -14,4 +14,6 @@ interface CharactersApi {
 
     @GET("api/characters/{name}")
     suspend fun getCharactersByName(@Path("name") name : String) : CharactersItem
+
+
 }

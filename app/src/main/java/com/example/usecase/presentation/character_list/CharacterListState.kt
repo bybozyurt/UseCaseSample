@@ -1,5 +1,6 @@
 package com.example.usecase.presentation.character_list
 
+import com.example.usecase.data.remote.dto.CharactersItem
 import com.example.usecase.domain.model.Characters
 
 /**
