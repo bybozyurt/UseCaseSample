@@ -1,6 +1,7 @@
 package com.example.usecase.data.remote
 
 import com.example.usecase.data.remote.dto.CharactersItem
+import com.example.usecase.domain.model.Characters
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -12,5 +13,5 @@ interface CharactersApi {
     suspend fun getCharacters() : List<CharactersItem>
 
     @GET("api/characters/{name}")
-    suspend fun getCharactersByName(@Path("name") name : String)
+    suspend fun getCharactersByName(@Path("name") name : String) : CharactersItem
 }

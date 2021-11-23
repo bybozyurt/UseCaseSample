@@ -13,4 +13,8 @@ class CharacterRepositoryImpl @Inject constructor(private val charactersApi: Cha
     override suspend fun getCharacters(): List<CharactersItem> {
         return charactersApi.getCharacters()
     }
+
+    override suspend fun getCharactersByName(name: String): CharactersItem {
+        return charactersApi.getCharactersByName(name)
+    }
 }

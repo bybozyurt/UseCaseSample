@@ -1,5 +1,6 @@
 package com.example.usecase.presentation.character_list
 
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,7 +18,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.usecase.presentation.Screen
 import com.example.usecase.presentation.character_list.components.CharacterListItem
+import kotlin.math.log
 
 /**
  * Created by Ahmet Bozyurt on 22.11.2021
@@ -34,6 +37,9 @@ fun CharacterListScreen(
             items(state.characters){character ->
                 CharacterListItem(
                     characters = character,
+                    onItemClick = {
+                        navController.navigate(Screen.CharacterDetailScreen.route + "/${character.name}")
+                    }
                 )
             }
         }

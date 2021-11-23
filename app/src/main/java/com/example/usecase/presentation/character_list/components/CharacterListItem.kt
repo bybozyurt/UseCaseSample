@@ -30,15 +30,7 @@ import com.google.accompanist.coil.rememberCoilPainter
 @Composable
 //fun CharacterListItem(characters: Characters, onItemClick : (Characters) -> Unit)
 //clickable{onItemClick(characters)}
-fun CharacterListItem(characters: Characters) {
-
-//    Row(
-//        Modifier
-//            .fillMaxWidth()
-//            .clickable { onItemClick(characters) }
-//            .padding(10.dp),
-//        Arrangement.SpaceBetween
-//    ){}
+fun CharacterListItem(characters: Characters, onItemClick : (Characters) -> Unit) {
 
     Card(
         modifier = Modifier
@@ -50,6 +42,7 @@ fun CharacterListItem(characters: Characters) {
         Row(
             modifier = Modifier
                 .padding(10.dp)
+                .clickable { onItemClick(characters) }
                 .clip(RoundedCornerShape(4.dp))
                 .background(Color.White)
         ) {
