@@ -30,6 +30,7 @@ class CharacterDetailViewModel @Inject constructor(
 
 
     init {
+        // yollanan argumanların keylere göre alınması
         savedStateHandle.get<String>(Constants.NAME)?.let { name ->
             //getCharacterDetail(name)
             _state.value = CharacterDetailState(name = name)

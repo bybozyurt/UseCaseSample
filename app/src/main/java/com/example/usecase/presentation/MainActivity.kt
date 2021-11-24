@@ -34,6 +34,8 @@ class MainActivity : AppCompatActivity() {
                         ///{actor}/{ancestry}/{image}
                         composable(
                             ///{image}
+
+                            //yollanan argumentlerin keyleri
                             route = Screen.CharacterDetailScreen.route + "/{name}/{house}/{actor}/{ancestry}",
                             arguments = listOf(
                                 navArgument("name"){

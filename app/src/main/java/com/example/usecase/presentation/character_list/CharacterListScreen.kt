@@ -37,7 +37,7 @@ fun CharacterListScreen(
                 CharacterListItem(
                     characters = character,
                     onItemClick = {
-
+                        // karaktere tıklandıgında detay ekranına yollanan bilgiler
                         navController.navigate(
                             Screen.CharacterDetailScreen.route +
                                     "/${character.name}/${character.house}/${character.ancestry}/${character.actor}"
