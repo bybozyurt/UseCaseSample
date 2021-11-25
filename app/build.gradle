@@ -97,10 +97,17 @@ dependencies {
 
     //Navigation
     implementation("androidx.navigation:navigation-compose:2.4.0-alpha08")
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
+    //implementation "android.arch.navigation:navigation-fragment-ktx:1.0.0"
+    //implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
 
     //ViewModel
     implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07'
 
     //observeAsState
     implementation 'androidx.compose.runtime:runtime-livedata:1.1.0-alpha03'
+
+    //Coil Image
+    implementation 'com.google.accompanist:accompanist-coil:0.12.0'
 }
