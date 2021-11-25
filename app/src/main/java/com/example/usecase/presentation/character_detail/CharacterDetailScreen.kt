@@ -1,19 +1,18 @@
 package com.example.usecase.presentation.character_detail
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -28,130 +27,57 @@ fun CharacterDetailScreen(
     viewModel: CharacterDetailViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.value
-    Log.d("TAG", "work" + state.name)
-
-
-//    Box(modifier = Modifier.fillMaxWidth()) {
-//        state.let {
-//            Surface(
-//                modifier = Modifier
-//                    .size(100.dp)
-//                    .clip(RoundedCornerShape(12.dp))
-//            ) {
-//                //Coil Image
-//                val image = rememberCoilPainter(
-//                    request = "${state.image}",
-//                    fadeIn = true
-//                )
-//
-//                Image(
-//                    painter = image,
-//                    contentDescription = "Character Image",
-//                    modifier = Modifier
-//                        .clip(RoundedCornerShape(10.dp)),
-//                    contentScale = ContentScale.Crop
-//                )
-//            }
-//            Text(
-//                text = "${state.name}",
-//                fontWeight = FontWeight.Bold,
-//                fontSize = 20.sp,
-//                color = Color.Black
-//            )
-//
-//            Text(
-//                text = "${state.actor}",
-//                fontWeight = FontWeight.Normal,
-//                fontSize = 14.sp,
-//                color = Color.Black,
-//                maxLines = 1,
-//                overflow = TextOverflow.Ellipsis,
-//                modifier = Modifier.padding(top = 10.dp)
-//            )
-//            Text(
-//                text = "${state.house}",
-//                fontWeight = FontWeight.Normal,
-//                fontSize = 14.sp,
-//                color = Color.Black,
-//                maxLines = 1,
-//                overflow = TextOverflow.Ellipsis,
-//                modifier = Modifier.padding(top = 10.dp)
-//            )
-//            Text(
-//                text = "${state.ancestry}",
-//                fontWeight = FontWeight.Normal,
-//                fontSize = 14.sp,
-//                color = Color.Black,
-//                maxLines = 1,
-//                overflow = TextOverflow.Ellipsis,
-//                modifier = Modifier.padding(top = 10.dp)
-//            )
-//        }
-
 
     Surface(
-
         modifier = Modifier.fillMaxSize()
     ) {
+        state.characters?.let { characters ->
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                //Coil Image
+                val image = rememberCoilPainter(
+                    request = "${characters.imageUrl}",
+                    fadeIn = true,
+                )
 
+                Image(
+                    painter = image,
+                    contentDescription = "Character Image",
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(10.dp))
+                        .width(150.dp)
+                        .height(150.dp)
+                        .wrapContentHeight(Alignment.CenterVertically)
+                        .padding(5.dp),
+                    contentScale = ContentScale.Crop
+                )
 
-        Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(bottom = 5.dp)) {
+                Spacer(modifier = Modifier.height(15.dp))
 
-            //Coil Image
-            val image = rememberCoilPainter(
-                request = "${state.image}",
-                fadeIn = true
-            )
+                Text(
+                    text = "${characters.fullName}",
+                    modifier = Modifier.padding(start = 15.dp, end = 10.dp),
+                    style = MaterialTheme.typography.h6,
+                    fontWeight = FontWeight.Bold
+                )
+                Spacer(modifier = Modifier.height(15.dp))
 
-            Image(
-                painter = image,
-                contentDescription = "Character Image",
-                modifier = Modifier
-                    .clip(RoundedCornerShape(10.dp)),
-                contentScale = ContentScale.Crop
-            )
-
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 120.dp),
-                horizontalArrangement = Arrangement.Center
-            ) { }
+                Text(
+                    text = "${characters.family}",
+                    modifier = Modifier.padding(start = 15.dp, end = 10.dp),
+                    style = MaterialTheme.typography.h5
+                )
+                Spacer(modifier = Modifier.height(15.dp))
+                Text(
+                    text = "${characters.title}",
+                    modifier = Modifier.padding(start = 15.dp, end = 10.dp),
+                    style = MaterialTheme.typography.h5
+                )
+            }
 
 
         }
-        Spacer(modifier = Modifier.height(10.dp))
-
-        Text(
-            text = "${state.name}",
-            modifier = Modifier.padding(start = 15.dp, end = 10.dp),
-            style = MaterialTheme.typography.h3
-        )
-
-        Spacer(modifier = Modifier.height(20.dp))
-
-        Text(
-            text = "${state.actor}",
-            modifier = Modifier.padding(start = 17.dp, end = 10.dp),
-            style = MaterialTheme.typography.h5
-        )
-
-        Spacer(modifier = Modifier.height(15.dp))
-
-        Text(
-            text = "${state.house}",
-            modifier = Modifier.padding(start = 17.dp, end = 10.dp),
-            style = MaterialTheme.typography.h5
-        )
-
-        Spacer(modifier = Modifier.height(15.dp))
-
-        Text(
-            text = "${state.ancestry}",
-            modifier = Modifier.padding(start = 17.dp, end = 10.dp),
-            style = MaterialTheme.typography.h5
-        )
-    }
     if (state.error.isNotBlank()) {
         Text(
             text = state.error,
@@ -163,9 +89,13 @@ fun CharacterDetailScreen(
 
         )
     }
-    if (state.isLoading) {
-        CircularProgressIndicator()
+        if (state.isLoading) {
+            Spacer(modifier = Modifier.size(20.dp))
+            CircularProgressIndicator()
+        }
     }
+
+
 }
 
 

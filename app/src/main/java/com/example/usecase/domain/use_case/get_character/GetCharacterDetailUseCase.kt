@@ -16,10 +16,10 @@ import javax.inject.Inject
  */
 class GetCharacterDetailUseCase @Inject constructor(private val characterRepository: CharacterRepository) {
 
-    operator fun invoke(name : String) : Flow<Resource<Characters>> = flow {
+    operator fun invoke(id : Int) : Flow<Resource<Characters>> = flow {
         try {
             emit(Resource.Loading<Characters>())
-            val characters = characterRepository.getCharactersByName(name).toCharacters()
+            val characters = characterRepository.getCharactersById(id).toCharacters()
             emit(Resource.Success<Characters>(characters))
 
         } catch (e : HttpException){

@@ -9,57 +9,45 @@ import com.google.gson.annotations.SerializedName
  */
 data class CharactersItem (
 
-    @SerializedName("actor")
-    val actor: String,
+    @SerializedName("id")
+    val id: Int,
 
-    @SerializedName("alive")
-    val alive: Boolean,
+    @SerializedName("firstName")
+    val firstName: String,
 
-    @SerializedName("ancestry")
-    val ancestry: String,
+    @SerializedName("lastName")
+    val lastName: String,
 
-    @SerializedName("dateOfBirth")
-    val dateOfBirth: String,
+    @SerializedName("fullName")
+    val fullName: String,
 
-    @SerializedName("eyeColour")
-    val eyeColour: String,
+    @SerializedName("title")
+    val title: String,
 
-    @SerializedName("gender")
-    val gender: String,
-
-    @SerializedName("hairColour")
-    val hairColour: String,
-
-    @SerializedName("hogwartsStaff")
-    val hogwartsStaff: Boolean,
-
-    @SerializedName("hogwartsStudent")
-    val hogwartsStudent: Boolean,
-
-    @SerializedName("house")
-    val house: String,
+    @SerializedName("family")
+    val family: String,
 
     @SerializedName("image")
     val image: String,
 
-    @SerializedName("name")
-    val name: String,
+    @SerializedName("imageUrl")
+    val imageUrl: String,
 
-    @SerializedName("patronus")
-    val patronus: String,
 
-    @SerializedName("species")
-    val species: String,
-
-    @SerializedName("yearOfBirth")
-    val yearOfBirth: String,
-
-    @Expose
-    var flag : Boolean = false,
+    var randomNumber : Int,
 
     )
 
 fun CharactersItem.toCharacters() : Characters {
-    return Characters(actor,ancestry,house, image, name, patronus)
+    return Characters(
+        family = family,
+        id = id,
+        firstName = firstName,
+        fullName = fullName,
+        lastName = lastName,
+        title = title,
+        imageUrl = imageUrl,
+        randomNumber = randomNumber
+    )
 }
 

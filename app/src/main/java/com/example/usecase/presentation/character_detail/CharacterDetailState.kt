@@ -10,11 +10,6 @@ data class CharacterDetailState (
     val isLoading: Boolean = false,
     val characters: Characters? = null,
     val error: String = "",
-    val name : String? = "",
-    val house : String? = "",
-    val actor : String? = "",
-    val image : String? = "",
-    val ancestry : String? = "",
 
     )
 

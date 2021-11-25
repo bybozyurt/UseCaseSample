@@ -31,28 +31,12 @@ class MainActivity : AppCompatActivity() {
                         composable(route = Screen.CharacterListScreen.route) {
                             CharacterListScreen(navController)
                         }
-                        ///{actor}/{ancestry}/{image}
                         composable(
-                            ///{image}
-
-                            //yollanan argumentlerin keyleri
-                            route = Screen.CharacterDetailScreen.route + "/{name}/{house}/{actor}/{ancestry}",
+                            route = Screen.CharacterDetailScreen.route + "/{id}",
                             arguments = listOf(
-                                navArgument("name"){
-                                    type = NavType.StringType
-                                },
-                                navArgument("house"){
-                                    type = NavType.StringType
-                                },
-                                navArgument("actor"){
-                                    type = NavType.StringType
-                                },
-                                navArgument("ancestry"){
-                                    type = NavType.StringType
-                                },
-//                                navArgument("image"){
-//                                    type = NavType.StringType
-//                                }
+                                navArgument("id"){
+                                    type = NavType.IntType
+                                }
                             )
                         )
                         {
@@ -64,4 +48,3 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-// +"/{name}" + "/{house}" + "/{actor}" + "/{ancestry}" + "/{image}"

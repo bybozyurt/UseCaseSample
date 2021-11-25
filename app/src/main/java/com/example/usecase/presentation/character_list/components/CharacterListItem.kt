@@ -1,16 +1,13 @@
 package com.example.usecase.presentation.character_list.components
 
-import android.view.Surface
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
@@ -27,11 +24,28 @@ import com.google.accompanist.coil.rememberCoilPainter
 /**
  * Created by Ahmet Bozyurt on 22.11.2021
  */
-@Composable
-//fun CharacterListItem(characters: Characters, onItemClick : (Characters) -> Unit)
-//clickable{onItemClick(characters)}
-fun CharacterListItem(characters: Characters, onItemClick : (Characters) -> Unit) {
 
+@Composable
+fun TopBar(onItemClick: () -> Unit) {
+
+    TopAppBar(
+        title = {
+            Text(text = "TopAppBar")
+        },
+        navigationIcon = {
+            IconButton(onClick = {onItemClick()}) {
+                Icon(Icons.Filled.Refresh, "")
+            }
+        },
+        backgroundColor = Color.Blue,
+        contentColor = Color.White,
+        elevation = 12.dp
+    )
+}
+
+
+@Composable
+fun CharacterListItem(characters: Characters, onItemClick: (Characters) -> Unit) {
     Card(
         modifier = Modifier
             .padding(10.dp, 5.dp, 10.dp, 5.dp)
@@ -53,7 +67,7 @@ fun CharacterListItem(characters: Characters, onItemClick : (Characters) -> Unit
             ) {
                 //Coil Image
                 val image = rememberCoilPainter(
-                    request = characters.image,
+                    request = characters.imageUrl,
                     fadeIn = true
                 )
 
@@ -72,14 +86,14 @@ fun CharacterListItem(characters: Characters, onItemClick : (Characters) -> Unit
                     .align(CenterVertically)
             ) {
                 Text(
-                    text = "${characters.name}",
+                    text = "${characters.fullName}",
                     fontWeight = FontWeight.Bold,
                     fontSize = 20.sp,
                     color = Color.Black
                 )
 
                 Text(
-                    text = "${characters.house}",
+                    text = "${characters.family}",
                     fontWeight = FontWeight.Normal,
                     fontSize = 14.sp,
                     color = Color.Black,
@@ -87,6 +101,20 @@ fun CharacterListItem(characters: Characters, onItemClick : (Characters) -> Unit
                     overflow = TextOverflow.Ellipsis,
                     modifier = Modifier.padding(top = 10.dp)
                 )
+            }
+            Column(
+                modifier = Modifier
+                    .padding(end = 15.dp)
+                    .align(CenterVertically)
+            )
+            {
+                Text(
+                    text = "${characters.randomNumber}",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp,
+                    color = Color.Red
+                )
+
             }
         }
     }

@@ -9,5 +9,5 @@ import com.example.usecase.domain.model.Characters
 interface CharacterRepository {
     suspend fun getCharacters() : List<CharactersItem>
 
-    suspend fun getCharactersByName(name : String) : CharactersItem
+    suspend fun getCharactersById(id : Int) : CharactersItem
 }
