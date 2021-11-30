@@ -1,4 +1,4 @@
-package com.example.usecase.di
+package com.example.data.di
 
 import com.example.data.remote.CharactersApi
 import dagger.Module
@@ -18,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
+object NetworkModule {
 
     @Provides
     @Singleton

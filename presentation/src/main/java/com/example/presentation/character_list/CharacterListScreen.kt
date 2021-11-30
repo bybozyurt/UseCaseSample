@@ -34,7 +34,7 @@ fun CharacterListScreen(
 
     Scaffold(topBar = {
         TopBar(
-        onItemClick = {viewModel.getCharacters()})
+        onItemClick = {viewModel.getCharactersFromSqlite()})
     }
     ){
         Box(modifier = Modifier.fillMaxSize()) {

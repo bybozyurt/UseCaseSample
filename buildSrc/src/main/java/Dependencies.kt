@@ -57,6 +57,8 @@ object Versions {
     const val junitExt = "1.1.3"
     const val espresso = "3.4.0"
 
+    const val room = "2.3.0"
+
 
 }
 
@@ -118,6 +120,15 @@ object Libs {
     const val composePreview = "androidx.compose.ui:ui-tooling-preview:${Versions.composeVersion}"
     const val composeJunit = "androidx.compose.ui:ui-test-junit4:${Versions.composeVersion}"
     const val composeTooling = "androidx.compose.ui:ui-tooling:${Versions.composeVersion}"
+
+    //room
+
+    const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
+    const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+    const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
+
+
+
 
 }
 
