@@ -1,0 +1,9 @@
+dependencies {
+    implementation(Libs.kotlinPlugin)
+    implementation(Libs.coreKtx)
+    implementation(Libs.appCompat)
+    implementation(Libs.material)
+    testImplementation(Libs.junit)
+    androidTestImplementation(Libs.junitExt)
+    androidTestImplementation(Libs.espresso)
+}
