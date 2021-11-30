@@ -26,5 +26,11 @@ dependencies {
     implementation(Libs.lifecycleHiltViewModel)
     implementation(Libs.navigationHiltCompose)
 
+    implementation(Libs.roomRuntime)
+    implementation(Libs.roomKtx)
+    kapt(Libs.roomCompiler)
+
+    implementation(Libs.coroutinesCore)
+    implementation(Libs.coroutinesAndroid)
 
 }
