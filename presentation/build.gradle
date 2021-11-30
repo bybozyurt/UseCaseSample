@@ -1,9 +1,8 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-android-extensions'
-    id 'dagger.hilt.android.plugin'
 }
 apply from: '../android_core_dependencies.gradle'
 apply from: '../android_commons.gradle'
@@ -24,14 +23,14 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
-
 }
 
 dependencies {
-    implementation project(Modules.presentation)
-    implementation project(Modules.data)
-    implementation project(Modules.common)
 
+    implementation project(Modules.common)
+    implementation project(Modules.data)
+
+    //Hilt
     implementation(Libs.hiltAndroid)
     kapt(Libs.hiltAndroidCompiler)
     kapt(Libs.hiltCompiler)
@@ -44,14 +43,36 @@ dependencies {
     androidTestImplementation(Libs.composeJunit)
     implementation(Libs.composeTooling)
 
+
+    //Navigation
+    implementation(Libs.navigationCompose)
+    implementation(Libs.navigationFragmentKtx)
+    implementation(Libs.navigationKtx)
+
+    //ViewModel
+    implementation(Libs.lifecycleViewModel)
+
+    //observeAsState
+    implementation(Libs.liveData)
+
+    //Coil Image
+    implementation(Libs.coil)
+
+    // Coroutines
+    implementation(Libs.coroutinesCore)
+    implementation(Libs.coroutinesAndroid)
+
+    // Coroutine Lifecycle Scopes
+
+    implementation(Libs.lifecycleViewModelKtx)
+    implementation(Libs.lifecycleKxt)
+
+    // Retrofit
     implementation(Libs.retrofit)
     implementation(Libs.retrofitGson)
     implementation(Libs.http)
     implementation(Libs.httpInterceptor)
 
-    implementation(Libs.navigationCompose)
-    implementation(Libs.navigationFragmentKtx)
-    implementation(Libs.navigationKtx)
 
 
 

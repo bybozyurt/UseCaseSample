@@ -10,9 +10,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.rememberNavController
-import com.example.usecase.presentation.character_detail.CharacterDetailScreen
-import com.example.usecase.presentation.character_list.CharacterListScreen
-import com.example.usecase.presentation.ui.theme.HaryyPotterAppYTTheme
+import com.example.presentation.Screen
+import com.example.presentation.character_detail.CharacterDetailScreen
+import com.example.presentation.character_list.CharacterListScreen
+import com.example.presentation.theme.HaryyPotterAppYTTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

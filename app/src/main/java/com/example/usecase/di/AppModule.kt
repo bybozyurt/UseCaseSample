@@ -1,15 +1,15 @@
 package com.example.usecase.di
 
-import com.example.usecase.data.remote.CharactersApi
+import com.example.data.remote.CharactersApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import javax.inject.Singleton
-import com.example.usecase.common.Constants.BASE_URL
-import com.example.usecase.data.repository.CharacterRepositoryImpl
-import com.example.usecase.domain.CharacterRepository
+import com.example.common.Constants.BASE_URL
+import com.example.data.repository.CharacterRepositoryImpl
+import com.example.data.domain.CharacterRepository
 import retrofit2.converter.gson.GsonConverterFactory
 
 
@@ -32,7 +32,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideCharacterRepository(api: CharactersApi) : CharacterRepository{
+    fun provideCharacterRepository(api: CharactersApi) : CharacterRepository {
         return CharacterRepositoryImpl(api)
     }
 }
